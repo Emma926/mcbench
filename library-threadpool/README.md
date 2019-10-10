@@ -2,7 +2,7 @@
 
 1. Install Eigen and modify EIGENROOT in eigen/compile.sh
 
-2. Compile each workload in its directory
+2. Compile all workloads
 ```
 bash compile.sh
 ```
