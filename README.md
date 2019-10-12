@@ -55,19 +55,21 @@ After experiments, output directories are generated, and one can use tools in ut
 
 ## Utils
 
-`utils/flamegraph.py` parses the `perf record` results into text files and flamegraphs. To use it anywhere is convinient for you, by simply running
+`utils/flamegraph.py` parses the `perf record` results into text files and flamegraphs. To use it anywhere is convinient for you, just simply run
 ```
 flamegraph.py $DIR
 ```
 where $DIR is the output directory from perf record experiments. It then generates .perf-folded files for the stack trace and .svg flamegraphs.  
 
-`utils/get_perfrecord.py` parses the outputs from `utils/flamegraph.py`, the .perf-folded files, and store the ouputs in json files in data/. To use it anywhere by running
+`utils/get_perfrecord.py` parses the outputs from `utils/flamegraph.py`, the .perf-folded files, and store the ouputs in json files in data/. To use it anywhere, just run
 ```
 get_perfrecord.py $DIR
 ```
 
-`utils/get_perf.py` parses the performance from `perf stat`, top-level analysis, bandwidth and run-time experiments and generates data in json files stored in data/. Note that main memory bandwidth experiment needs to have 'bw' in the directory; top-level analysis needs to have 'td', and cross-socket memory bandwidth experiment needs to have 'upi'.
-
+`utils/get_perf.py` parses the performance from `perf stat`, top-level analysis, bandwidth and run-time experiments and generates data in json files stored in data/. Note that main memory bandwidth experiment needs to have 'bw' in the directory; top-level analysis needs to have 'td', and cross-socket memory bandwidth experiment needs to have 'upi'. To use it anywhere, run
+```
+get_perf.py $DIR
+```
 
 Yu Emma Wang  
 10/8/2019
