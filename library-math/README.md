@@ -12,13 +12,6 @@ https://github.com/intel/mkl-dnn
 
 https://eigen.tuxfamily.org/dox/GettingStarted.html
 
-## Other tools
-
-Flamegraph: 
-
-https://github.com/brendangregg/FlameGraph
-
-
 # 2. Modify env.sh
 Modify libraries locations in env.sh and do `source env.sh`
 

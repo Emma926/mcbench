@@ -40,4 +40,3 @@ bash perfrecord_inceptionv2.sh
 ```
 bash perf_trace.sh
 ```
-```
