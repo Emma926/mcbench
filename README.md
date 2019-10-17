@@ -1,5 +1,5 @@
 # mcbench
-Mille Crepe Bench: layer-wise performance analysis for deep learning frameworks
+Mille Crepe Bench: multi-layer performance analysis for deep learning frameworks
 
 
 This repository contains the scripts and workloads of our deep learning framework analysis paper. If
