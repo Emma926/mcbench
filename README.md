@@ -19,8 +19,8 @@ arXiv preprint arXiv:1908.04705 (2019).
 }
 ```
 
-![tftuner](https://github.com/Emma926/mcbench/blob/master/TF-Tuner.png)
-This repository also contains TensorFlow Tuner in tftuner/, that improves TensorFlow models' performance on CPU
+![tftuner](https://github.com/Emma926/mcbench/blob/master/TF-Tuner.png)  
+This repository also contains **TensorFlow Tuner** in tftuner/, that improves TensorFlow models' performance on CPU
 by 1.34x on average.
 
 
