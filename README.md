@@ -1,7 +1,6 @@
 # mcbench
 Mille Crepe Bench: multi-layer performance analysis for deep learning frameworks
 
-
 This repository contains the scripts and workloads of our deep learning framework analysis paper. If
 you find it useful, please cite [our paper](https://arxiv.org/abs/1908.04705).
 
@@ -20,6 +19,13 @@ arXiv preprint arXiv:1908.04705 (2019).
 }
 ```
 
+## TensorFlow Tuner
+![tftuner](https://github.com/Emma926/mcbench/blob/master/TF-Tuner.png)  
+This repository also contains **TensorFlow Tuner** in tftuner/, that improves TensorFlow models' performance on CPU
+by 1.34x on average.
+
+
+## Summary
 This figure summarizes the structure of the paper, as well as this repository.
 ![mcbench](https://github.com/Emma926/mcbench/blob/master/overview.png)
 
