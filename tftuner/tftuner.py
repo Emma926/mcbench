@@ -9,7 +9,7 @@ Wang, Yu Emma, Carole-Jean Wu, Xiaodong Wang, Kim Hazelwood, and David Brooks.
 "Exploiting Parallelism Opportunities with Deep Learning Frameworks." 
 arXiv preprint arXiv:1908.04705 (2019).
 
-This code was tested with fc_tf.py and inception.
+This code was tested with fc_tf.py, inception, and NCF.
 
 Yu Emma Wang
 10/16/2019
@@ -55,18 +55,26 @@ def dfs(n, s_graph):
   return max(depths) + 1
 
 # An heavy operator is defined to be the ops taking 
-# much more execution time than other ops.
-# Such ops include MatMul, Conv and Embedding ops.
-def isheavy(n):
+# much more execution time than other ops, such as
+# MatMul, Conv and Embedding ops.
+# It is important to note that heavy ops vary based
+# on the models, hardware and frameworks.
+# This function implements a heuristc to identify
+# heavy ops, to generalize to more scenarios, it
+# has to be validated.
+def isheavy(n, embedding_flag):
   if 'gradient' in n:
     return False
-  if 'MatMul' in n.split('/')[-1] or 'Conv' in n.split('/')[-1]:
+  if embedding_flag and 'embedding_lookup' in n.split('/')[-1]:
+    return True
+  if not embedding_flag and 'MatMul' in n.split('/')[-1] or 'Conv' in n.split('/')[-1]:
     return True
   return False
 
 # the interface of TF-Tuner.
 def tftuner(graph):
   # Initialize data structures
+  embedding_flag = False
   g_dict = {}
   s_graph = {}
   heavy_ops = []
@@ -74,9 +82,12 @@ def tftuner(graph):
     g_dict[op.name] = []
     for i in op.inputs:
       g_dict[op.name].append(i.name.split(':')[0])
-      #if isheavy(op.name):
-      #  print(op.name, '<-', i)
-    if isheavy(op.name):
+      #print(op.name, '<-', i)
+      if 'embedding' in op.name:
+        embedding_flag = True
+
+  for op in graph.get_operations():
+    if isheavy(op.name, embedding_flag):
       heavy_ops.append(op.name)
   for op in heavy_ops:
     s_graph[op] = []
